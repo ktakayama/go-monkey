@@ -1,9 +1,9 @@
 package parser
 
 import (
-	"testing"
 	"monkey/ast"
 	"monkey/lexer"
+	"testing"
 )
 
 func TestLetStatements(t *testing.T) {
@@ -25,18 +25,18 @@ let foobar = 838383;
 	}
 	tests := []struct {
 		exprectedIdentifier string
-	 }{
-		 {"x"},
-		 {"y"},
-		 {"foobar"},
-	 }
+	}{
+		{"x"},
+		{"y"},
+		{"foobar"},
+	}
 
-	 for i, tt := range tests {
-		 stmt := program.Statements[i]
-		 if !testLetStatement(t, stmt, tt.exprectedIdentifier) {
-			 return
-		 }
-	 }
+	for i, tt := range tests {
+		stmt := program.Statements[i]
+		if !testLetStatement(t, stmt, tt.exprectedIdentifier) {
+			return
+		}
+	}
 }
 
 func testLetStatement(t *testing.T, s ast.Statement, name string) bool {
@@ -63,4 +63,3 @@ func testLetStatement(t *testing.T, s ast.Statement, name string) bool {
 
 	return true
 }
-
