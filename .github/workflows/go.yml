@@ -16,7 +16,10 @@ jobs:
     - name: Set up Go
       uses: actions/setup-go@v2
       with:
-        go-version: 1.7
+        go-version: 1.7.6
 
     - name: Test
-      run: go test -v ./...
+      run: |
+        APP_DIR="${GOROOT}/src/monkey/"
+        mkdir -p ${APP_DIR} && cp -r ./ ${APP_DIR} && cd ${APP_DIR}
+        go test -v ./...
