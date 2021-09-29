@@ -63,7 +63,7 @@ func (ls *LetStatement) String() string {
 		out.WriteString(ls.Value.String())
 	}
 
-	out.WriteString(" ; ")
+	out.WriteString(";")
 
 	return out.String()
 }
@@ -99,7 +99,7 @@ func (rs *ReturnStatement) String() string {
 		out.WriteString(rs.ReturnValue.String())
 	}
 
-	out.WriteString(" ; ")
+	out.WriteString(";")
 
 	return out.String()
 }
