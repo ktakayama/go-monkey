@@ -7,6 +7,17 @@ import (
 	"monkey/token"
 )
 
+const (
+	_ int = iota
+	LOWEST
+	EQUALS      // ==
+	LESSGREATER // > または <
+	SUM         // +
+	PRODUCT     // *
+	PREFIX      // -X または !X
+	CALL        // myFunction(X)
+)
+
 type (
 	prefixParseFn func() ast.Expression
 	infixParseFn  func(ast.Expression) ast.Expression
