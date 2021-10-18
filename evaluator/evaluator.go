@@ -1,6 +1,7 @@
 package evaluator
 
 import (
+	"fmt"
 	"monkey/ast"
 	"monkey/object"
 )
@@ -47,6 +48,10 @@ func Eval(node ast.Node) object.Object {
 		return evalInfixExpression(node.Operator, left, right)
 	}
 	return nil
+}
+
+func newError(format string, a ...interface{}) *object.Error {
+	return &object.Error{Message: fmt.Sprintf(format, a...)}
 }
 
 func evalProgram(program *ast.Program) object.Object {
