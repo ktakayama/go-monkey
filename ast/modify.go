@@ -35,6 +35,23 @@ func Modify(node Node, modifier ModifierFunc) Node {
 			node.Statements[i], _ = Modify(node.Statements[i], modifier).(Statement)
 		}
 
+	case *ReturnStatement:
+		node.ReturnValue = Modify(node.ReturnValue, modifier).(Expression)
+
+	case *LetStatement:
+		node.Value = Modify(node.Value, modifier).(Expression)
+
+	case *FunctionLiteral:
+		for i := range node.Parameters {
+			node.Parameters[i], _ = Modify(node.Parameters[i], modifier).(*Identifier)
+		}
+		node.Body, _ = Modify(node.Body, modifier).(*BlockStatement)
+
+	case *ArrayLiteral:
+		for i := range node.Elements {
+			node.Elements[i], _ = Modify(node.Elements[i], modifier).(Expression)
+		}
+
 	}
 
 	return modifier(node)
