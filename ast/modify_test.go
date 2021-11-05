@@ -51,6 +51,14 @@ func TestModify(t *testing.T) {
 			&InfixExpression{Left: two(), Operator: "+", Right: one()},
 			&InfixExpression{Left: two(), Operator: "+", Right: two()},
 		},
+		{
+			&PrefixExpression{Operator: "-", Right: one()},
+			&PrefixExpression{Operator: "-", Right: two()},
+		},
+		{
+			&IndexExpression{Left: one(), Index: one()},
+			&IndexExpression{Left: two(), Index: two()},
+		},
 	}
 
 	for _, tt := range tests {
