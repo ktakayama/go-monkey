@@ -62,6 +62,14 @@ func TestQuoteUnquote(t *testing.T) {
 			`let foobar = 8 ; quote(unquote(foobar))`,
 			`8`,
 		},
+		{
+			`quote(unquote(true))`,
+			`true`,
+		},
+		{
+			`quote(unquote(false))`,
+			`false`,
+		},
 	}
 
 	for _, tt := range tests {
