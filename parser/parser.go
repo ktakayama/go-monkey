@@ -384,7 +384,7 @@ func (p *Parser) parseHashLiteral() ast.Expression {
 		if !p.expectPeek(token.COLON) {
 			return nil
 		}
-		
+
 		p.nextToken()
 		value := p.parseExpression(LOWEST)
 		hash.Pairs[key] = value
